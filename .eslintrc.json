@@ -12,6 +12,7 @@
     },
     "rules": {
         "indent": ["error", 4],
-        "new-cap": ["error", { "properties": false }]
+        "new-cap": ["error", { "properties": false }],
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
     }
 }
