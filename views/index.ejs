@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>All Emloyees</title>
+</head>
+<body>
+    <%- include('./partials/header'); %>
+    <div class="container p-3" style="min-height:500px">
+        <a href="/api/get-list" class="text-light btn btn-primary btn-lg text-decoration-none <%= (typeof data != 'undefined') ? 'd-none' : '' %>">Show all Emloyees</a>
+        <% if(typeof data != 'undefined') { %>
+        <h1 class="mb-5 text-center">Employees List</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Department</th>
+                    <th>Team</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let count = 1; %>
+                <% for (const [key, value] of Object.entries(data)) { %>
+                    <tr>
+                        <th scope="row"><%= count %></th>
+                        <td><%= value.name %></td>
+                        <td><%= value.role %></td>
+                        <td><%= value.department %></td>
+                        <td><%= value.team %></td>
+                    </tr>
+                    <% count++; %>
+                <% } %>
+            </tbody>
+        </table>
+        <% } %>
+    </div>
+    <%- include('./partials/footer'); %>
+</body>
+
+</html>
